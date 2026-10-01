@@ -2,8 +2,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 
 import { FallingLeaves } from "@/components/FallingLeaves";
-import { BUSINESS, PROMOS, SERVICES, TRUST } from "@/components/Chrome";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { Pricing } from "@/components/Pricing";
+import { Reviews, ServiceMap } from "@/components/Extras";
+import { BUSINESS, CITIES, PROMOS, SERVICES, TRUST } from "@/components/Chrome";
 import heroVideo from "@/assets/hero.mp4";
+import sidingBefore from "@/assets/siding-before.png";
+import sidingAfter from "@/assets/siding-after.png";
+import gutterBefore from "@/assets/gutter-before.png";
+import gutterAfter from "@/assets/gutter-after.png";
+import drainBefore from "@/assets/drain-before.png";
+import drainAfter from "@/assets/drain-after.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -93,7 +102,7 @@ function Home() {
         </div>
       </section>
 
-      {/* SERVICES TEASER */}
+      {/* SERVICES */}
       <section className="dotted-grid bg-background py-20">
         <div className="mx-auto max-w-6xl px-5">
           <span className="font-display text-xs tracking-[0.3em] text-primary uppercase">
@@ -103,17 +112,30 @@ function Home() {
             Total gutter cleaning and restoration services
           </h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.slice(0, 3).map((s) => (
-              <article key={s.name} className="surface-card rounded-2xl border border-border p-6">
+            {SERVICES.map((s, i) => (
+              <article
+                key={s.name}
+                className={`surface-card rounded-2xl border border-border p-6 ${
+                  i === 1 ? "bg-navy-gradient text-primary-foreground" : ""
+                }`}
+              >
                 <img
                   src={s.img}
                   alt={s.name}
                   loading="lazy"
                   className="-mx-6 -mt-6 mb-5 aspect-[16/9] w-[calc(100%+3rem)] max-w-none rounded-t-2xl object-cover"
                 />
-                <div className="mb-4 h-1 w-10 rounded-full bg-spring" />
-                <h3 className="font-display text-xl uppercase">{s.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                <div className={`mb-4 h-1 w-10 rounded-full ${i === 1 ? "bg-cta" : "bg-spring"}`} />
+                <h3 className={`font-display text-xl uppercase ${i === 1 ? "text-primary-foreground" : ""}`}>
+                  {s.name}
+                </h3>
+                <p
+                  className={`mt-2 text-sm leading-relaxed ${
+                    i === 1 ? "text-primary-foreground/80" : "text-muted-foreground"
+                  }`}
+                >
+                  {s.desc}
+                </p>
               </article>
             ))}
           </div>
@@ -125,6 +147,76 @@ function Home() {
               View all services
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* BEFORE & AFTER */}
+      <section className="bg-navy-gradient py-20 text-primary-foreground">
+        <div className="mx-auto max-w-6xl px-5">
+          <h2 className="text-primary-foreground font-display text-3xl uppercase sm:text-5xl">
+            See the difference
+          </h2>
+          <p className="mt-3 max-w-xl text-primary-foreground/75">
+            Real before-and-after results from {BUSINESS.name}. Drag the slider on any photo.
+          </p>
+          <div className="mt-10 grid gap-8 lg:grid-cols-3">
+            <BeforeAfter
+              before={gutterBefore}
+              after={gutterAfter}
+              label="Roof & gutter line clearing"
+            />
+            <BeforeAfter
+              before={sidingBefore}
+              after={sidingAfter}
+              label="Siding power washing"
+            />
+            <BeforeAfter
+              before={drainBefore}
+              after={drainAfter}
+              label="Flat roof drain clearing"
+            />
+          </div>
+          <div className="mt-10">
+            <Link
+              to="/results"
+              className="inline-flex rounded-full border border-primary-foreground/30 px-7 py-3.5 font-display text-sm tracking-wider text-primary-foreground uppercase transition hover:border-cta hover:text-cta"
+            >
+              View full gallery
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <div className="[&>section]:py-20">
+        <Pricing />
+      </div>
+
+      {/* REVIEWS */}
+      <Reviews />
+
+      {/* SERVICE AREAS */}
+      <section className="dotted-grid bg-background py-20">
+        <div className="mx-auto max-w-6xl px-5">
+          <span className="font-display text-xs tracking-[0.3em] text-primary uppercase">
+            Where we work
+          </span>
+          <h2 className="mt-3 font-display text-3xl uppercase sm:text-5xl">Serving South Jersey</h2>
+          <p className="mt-3 max-w-xl text-muted-foreground">
+            Headquartered in Pennsauken, NJ and covering the surrounding towns.
+          </p>
+          <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {CITIES.map((c) => (
+              <li
+                key={c}
+                className="flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-3 text-sm"
+              >
+                <span className="text-spring">✓</span>
+                {c}
+              </li>
+            ))}
+          </ul>
+          <ServiceMap className="mt-8 h-96" />
         </div>
       </section>
 
