@@ -242,7 +242,7 @@ function Home() {
             <span className="font-display text-xs tracking-[0.3em] text-cta uppercase">
               Get in touch
             </span>
-            <h2 className="mt-3 font-display text-3xl uppercase sm:text-5xl">
+            <h2 className="mt-3 font-display text-3xl text-primary-foreground uppercase sm:text-5xl">
               Get your free estimate
             </h2>
             <p className="mt-4 max-w-md text-primary-foreground/75">
@@ -269,7 +269,7 @@ function Home() {
       <section className="bg-navy-gradient py-16 text-primary-foreground">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-5">
           <div>
-            <h2 className="font-display text-3xl uppercase sm:text-4xl">
+            <h2 className="font-display text-3xl text-primary-foreground uppercase sm:text-4xl">
               Get your gutters cleaned today
             </h2>
             <p className="mt-2 text-primary-foreground/75">
