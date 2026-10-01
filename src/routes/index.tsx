@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { FallingLeaves } from "@/components/FallingLeaves";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { Pricing } from "@/components/Pricing";
-import { Reviews, ServiceMap } from "@/components/Extras";
+import { Reviews, ServiceMap, ContactForm } from "@/components/Extras";
 import { BUSINESS, CITIES, PROMOS, SERVICES, TRUST } from "@/components/Chrome";
 import heroVideo from "@/assets/hero.mp4";
 import sidingBefore from "@/assets/siding-before.png";
@@ -232,6 +232,36 @@ function Home() {
               <p className="mt-2 text-sm text-muted-foreground">{p.who}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="bg-navy-gradient py-20 text-primary-foreground">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-2">
+          <div>
+            <span className="font-display text-xs tracking-[0.3em] text-cta uppercase">
+              Get in touch
+            </span>
+            <h2 className="mt-3 font-display text-3xl uppercase sm:text-5xl">
+              Get your free estimate
+            </h2>
+            <p className="mt-4 max-w-md text-primary-foreground/75">
+              Call or send the form and we&apos;ll get right back to you. Free estimates, no
+              obligation.
+            </p>
+            <a
+              href={BUSINESS.phoneHref}
+              className="mt-6 block font-display text-3xl text-cta sm:text-4xl"
+            >
+              {BUSINESS.phone}
+            </a>
+            <p className="mt-6 text-sm text-primary-foreground/70">
+              {BUSINESS.address}
+              <br />
+              {BUSINESS.hours}
+            </p>
+          </div>
+          <ContactForm />
         </div>
       </section>
 
